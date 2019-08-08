@@ -1,10 +1,16 @@
+const http = require('http');
 const express = require('express');
 const app = express();
+const io = require('socket.io');
 
-app.get('/', function(rea, res) {
-    res.end('Mi chat iniciado');
-});
+const server = http.createServer(app);
 
-app.listen(3000, function() {
+app.set('port', process.env.PORT || 3000);
+
+app.use(express.static(__dirname + '/public'));
+
+server.listen(app.get('port'), function() {
     console.log('Servidor iniciado');
 });
+
+io.listen(server);
