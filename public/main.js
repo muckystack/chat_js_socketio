@@ -1,4 +1,8 @@
 $(function () {
+
+    // Socket iniciado
+    var socket = io();
+
     console.log('Cargado!');
 
     var message = $('#chat-message');
