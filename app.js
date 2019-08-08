@@ -12,14 +12,3 @@ app.use(express.static(__dirname + '/public'));
 server.listen(app.get('port'), function() {
     console.log('Servidor iniciado');
 });
-
-var sockets = io.listen(server);
-
-sockets.on('connection', function (socket) {
-    console.log('Nuevo cliente conectado');
-
-    socket.on('mensaje-del-cliente', function(datos) {
-        console.log(datos);
-        sockets.emit('mensaje-del-servidor', datos);
-    });
-})
